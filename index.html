@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta name="viewport" content="with=device-width, initial scale=1.0">
+        <title> University Website Design </title>
+        <link rel="stylesheet" href="js.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    </head>
+
+<body>
+    <section class = "header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li class="dropdown">
+                        <a href="housing.html">ONCAMPUS HOUSING <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="Warren.html">Warren Towers</a></li>
+                            <li><a href="Tower.html">The Tower</a></li>
+                            <li><a href="claflin.html">Claflin Hall</a></li>
+                            <li><a href="sleeper.html">Sleeper Hall</a></li>
+                            <li><a href="rich.html">Rich Hall</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="classmap.html">CLASS MAP</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    <div class = "text-box">
+        <h1>Unlock Your BU Journey: Your Ultimate Guide to Campus Living</h1>
+        <P>Discover the Perfect Dormitory, Connect with a Vibrant Community, and Make BU Your Home Away from Home. <br>Explore, Choose, and Thrive in Your BU Experience with Expert Insights and Local Wisdom.
+        </P>
+        <a href=""class = "hero-btn">Visit Us To Know More</a>
+    </div>
+
+
+    </section>
+
+
+
+    <!----- Video -------->
+    <section class="video">
+        <h1>A Guided Tour</h1>
+        <p> The BU Housing Guide is here to make your transition smooth and memorable.</p>
+
+        <div class="vid">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dUGGG3d3r-o?si=HDhv6VbpvHMmFpgW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!------- Reviews  ------->
+    <section class="reviews">
+        <h1> Student Stories: Voices from Our BU Community</h1>
+        <p>Your Voice, Your Impact: Shaping Campus Life Through Reviews</p>
+
+        <div class="row">
+            <div class="testimonial-col">
+                <img src="images/user1.jpg">
+                <div>
+                    <p>Rating: ⭐⭐⭐⭐⭐ (5/5)
+                        I stumbled upon the BU Housing Guide when searching for information about on-campus living, and I couldn't be happier. This website is an absolute game-changer for BU freshmen like me. It's incredibly user-friendly, with a clean design and intuitive navigation. The real-time videos and photos of dorms are a lifesaver for someone like me who's never been to campus. The reviews from previous residents give me real insights into what to expect.
+                        The community here is fantastic, too. I love reading other students' experiences and sharing mine. The team behind this site has done a remarkable job. It's not just a housing guide; it's a support system for navigating university life. Highly recommended!
+                    </p>
+                    <h3>Samantha Werner</h3>
+                </div>
+            </div>
+            <div class="testimonial-col">
+                <img src="images/user2.jpg">
+                <div>
+                    <p>Rating: ⭐⭐⭐⭐ (4/5)
+                        The BU Housing Guide is a valuable resource for students looking for on-campus housing information. The real-time visuals and verified reviews are incredibly helpful. 
+                        The design is clean and easy to navigate, making it a breeze to find information. However, I believe there's room for improvement. 
+                        The website could benefit from more detailed information about nearby amenities and perhaps more user interactivity. Despite this, it's a solid platform for new students, and I would recommend it for its useful content.
+                    </p>
+                    <h3>Max Rainer</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--------footer------>
+
+    <section class = "footer">
+        <h4>About Us</h4>
+        <p>BU Housing Guide is your trusted companion in making informed housing decisions.<br> 
+            Our mission is to simplify your transition to Boston University by providing verified insights from previous residents and real-time information about campus living.<br> 
+            We're here to help you thrive in your new academic journey.</p>
+            <div class="icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <p>Made by Syeda and Emma</p>
+    </section>
+        
+    
+
+<!--------JavaScript for Toggle Menu---------->
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right = "0";
+
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+</body>
+</html>

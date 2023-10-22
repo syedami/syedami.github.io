@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta name="viewport" content="with=device-width, initial scale=1.0">
+        <title> University Website Design </title>
+        <link rel="stylesheet" href="js.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    </head>
+
+<body>
+    <section class = "sub-header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li class="dropdown">
+                        <a href="housing.html">ONCAMPUS HOUSING <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="Warren.html">Warren Towers</a></li>
+                            <li><a href="Tower.html">The Tower</a></li>
+                            <li><a href="claflin.html">Claflin Hall</a></li>
+                            <li><a href="sleeper.html">Sleeper Hall</a></li>
+                            <li><a href="rich.html">Rich Hall</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="classmap.html">CLASS MAP</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>Contact Us</h1>
+    </section>
+    
+    <section class="location">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.6258527531754!2d-71.1079740238912!3d42.350499671193745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e379f063e53817%3A0x2b346e00e0a3bec8!2sBoston%20University!5e0!3m2!1sen!2sus!4v1697952210190!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+
+    <!--contact us!-->
+    <section class="contact-us">
+        <div class="row">
+            <div class="contact-col">
+                <div>
+                    <i class="fa fa-home"></i>
+                    <span>
+                        <h5>Boston University</h5>
+                        <p>Boston, MA 02215</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <span>
+                        <h5>+1 0001001000</h5>
+                        <p>Monday to Friday, 10 a.m. to 6 p.m.</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <span>
+                        <h5>info@terriernest.com</h5>
+                        <p>Email us your query</p>
+                    </span>
+                </div>
+            </div>
+        <div class="contact-col">
+                <h3>Share your thoughts.</h3>
+                <form action="form.php" method="post">
+                    <input type="text" name="name" placeholder="Enter Name" required>
+                    <input type="email" name="email" placeholder="Enter Email" required>
+                    <input type="text" name="subject" placeholder="Enter Subject" required>
+                    <textarea rows="8" name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="hero-btn red-btn">Leave a review</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!--------footer------>
+
+    <section class = "footer">
+        <h4>About Us</h4>
+        <p>BU Housing Guide is your trusted companion in making informed housing decisions.<br> 
+            Our mission is to simplify your transition to Boston University by providing verified insights from previous residents and real-time information about campus living.<br> 
+            We're here to help you thrive in your new academic journey.</p>
+            <div class="icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <p>Made by Syeda and Emma</p>
+    </section>
+        
+    
+
+<!--------JavaScript for Toggle Menu---------->
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right = "0";
+
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+</body>
+</html>

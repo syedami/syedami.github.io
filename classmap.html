@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="with=device-width, initial scale=1.0">
+    <title> University Website Design </title>
+    <link rel="stylesheet" href="js.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Find Closest Dorm</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+</head>
+<body>
+    <section class = "sub-header6">
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li class="dropdown">
+                        <a href="housing.html">ONCAMPUS HOUSING <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="Warren.html">Warren Towers</a></li>
+                            <li><a href="Tower.html">The Tower</a></li>
+                            <li><a href="claflin.html">Claflin Hall</a></li>
+                            <li><a href="sleeper.html">Sleeper Hall</a></li>
+                            <li><a href="rich.html">Rich Hall</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="classmap.html">CLASS MAP</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    <div class = "text-box">
+        <h1>Navigate Your Campus: Find the Closest Dorm with Ease</h1>
+        <P>Our mapping tool helps you effortlessly find the nearest dormitory to your chosen college, ensuring a convenient and efficient campus experience.
+        </P>
+    </div>
+
+
+    </section>
+
+    <!----------------Find Closest Dormitory ---------------->
+
+    <h1>Find Closest Dormitory</h1>
+
+    <select id="college-select">
+        <option value="CAS">CAS</option>
+        <option value="CDS">CDS</option>
+        <option value="CGS">CGS</option>
+        <option value="BUA">BUA</option>
+        <option value="KHC">KHC</option>
+        <option value="COM">COM</option>
+        <option value="ENG">ENG</option>
+        <option value="CFA">CFA</option>
+        <option value="EOP">EOP</option>
+        <option value="SHA">SHA</option>
+        <option value="QST">QST</option>
+        <!-- Add more colleges as needed -->
+    </select>
+    <button id="find-dorm-button">Find Closest Dorm</button>
+    <div id="map-container">
+        <div id="map">
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTt3qLDY2ueNXM5RpIXt4oqpX0cwnT-Y&callback=initMap" async defer></script>
+        </div>
+        <div id="dorm-address"></div>
+    </div>
+
+    <script>
+        // Initialize the map
+        let map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 42.349726, lng: -71.099111 }, // Replace with the center coordinates of your campus
+                zoom: 15
+            });
+        }
+        // Define the coordinates of colleges and dorms
+        const collegeCoordinates = {
+            CAS: { lat: 42.361145, lng: -71.057083 }, // Replace with CAS coordinates
+            CDS: { lat: 42.3499, lng: -71.1032 }, // Replace with CDS coordinates
+            CGS: { lat: 42.3514, lng: -71.1146 },
+            BUA: { lat: 42.3505, lng: -71.1054 },
+            KHC: { lat: 42.3503, lng: -71.0970 },
+            COM: { lat: 42.3489, lng: -71.1025 }, // Replace with CGS coordinates
+            ENG: { lat: 42.3485, lng: -71.1030 },
+            CFA: { lat: 42.3513, lng: -71.1139 },
+            EOP: { lat: 42.361145, lng: -71.057083 },
+            SHA: { lat: 42.3510, lng: -71.1174 },
+            QST: { lat: 42.3496, lng: -71.0995 },
+            //add more
+        };
+
+        const dormCoordinates = {
+            Warren: { lat: 42.3495, lng: -71.1048 }, 
+            Tower: { lat: 42.3503, lng: -71.0998 }, 
+            Claflin: { lat: 42.3525, lng: -71.1198 }, 
+            Sleeper: { lat: 42.3530, lng: -71.1206 }, 
+            Rich: { lat: 42.3535, lng: -71.1205 }, 
+        };
+
+        // Calculate the distance between two sets of coordinates (in meters)
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+            const rad = Math.PI / 180;
+            const earthRadius = 6371; // Radius of the Earth in kilometers
+
+            const dLat = (lat2 - lat1) * rad;
+            const dLng = (lng2 - lng1) * rad;
+
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = earthRadius * c * 1000; // Convert to meters
+
+            return distance;
+        }
+
+        // Find the closest dorm to the selected college
+        document.getElementById("find-dorm-button").addEventListener("click", function() {
+            const selectedCollege = document.getElementById("college-select").value;
+            const collegeCoords = collegeCoordinates[selectedCollege];
+
+            if (collegeCoords) {
+                let closestDorm = null;
+                let minDistance = Number.MAX_VALUE;
+
+                for (const dormName in dormCoordinates) {
+                    const dormCoords = dormCoordinates[dormName];
+                    const distance = calculateDistance(collegeCoords.lat, collegeCoords.lng, dormCoords.lat, dormCoords.lng);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestDorm = dormName;
+                    }
+                }
+
+                if (closestDorm) {
+                    // Display the closest dorm
+                    document.getElementById("dorm-address").textContent = `Closest Dorm: ${closestDorm}`;
+                } else {
+                    document.getElementById("dorm-address").textContent = "No dorms found.";
+                }
+            } else {
+                document.getElementById("dorm-address").textContent = "Invalid college selection.";
+            }
+        });
+    </script>
+
+    <!--------footer------>
+
+    <section class = "footer">
+        <h4>About Us</h4>
+        <p>BU Housing Guide is your trusted companion in making informed housing decisions.<br> 
+            Our mission is to simplify your transition to Boston University by providing verified insights from previous residents and real-time information about campus living.<br> 
+            We're here to help you thrive in your new academic journey.</p>
+            <div class="icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <p>Made by Syeda and Emma</p>
+    </section>
+        
+    
+
+<!--------JavaScript for Toggle Menu---------->
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right = "0";
+
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta name="viewport" content="with=device-width, initial scale=1.0">
+        <title> University Website Design </title>
+        <link rel="stylesheet" href="js.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    </head>
+
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li class="dropdown">
+                        <a href="housing.html">ONCAMPUS HOUSING <i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="Warren.html">Warren Towers</a></li>
+                            <li><a href="Tower.html">The Tower</a></li>
+                            <li><a href="claflin.html">Claflin Hall</a></li>
+                            <li><a href="sleeper.html">Sleeper Hall</a></li>
+                            <li><a href="rich.html">Rich Hall</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="classmap.html">CLASS MAP</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>Explore Your On-Campus Housing Options</h1>
+        <P>Discover the Perfect Dormitory, Connect with a Vibrant Community, and Make BU Your Home Away from Home. <br>Explore, Choose, and Thrive in Your BU Experience with Expert Insights and Local Wisdom.
+        </P>
+
+
+    </section>
+
+    <!----- Dorms -------->
+
+    <section class="dorms">
+        <h1>List of Dormitories - Your On-Campus Home Options</h1>
+        <p>Below, you'll find a curated list of our featured dormitories, each with its own charm and advantages. Whether you're looking for a bustling hub of campus life or a quieter retreat for focused studying, our list covers a range of housing options to suit every Terrier's needs. <br>
+            Discover the possibilities, explore the details, and hear what fellow students have to say about their experiences in each dormitory. Your journey to finding the perfect on-campus living space starts here.</p>
+    
+        <div class="row">
+            <div class="dorm-col">
+                <h3><a href="Warren.html">Warren Towers</a></h3>
+                <p>Located at the heart of central campus, Warren Towers offers a vibrant community and easy access to classes, making it a bustling hub for BU life.</p>
+            </div>
+            <div class="dorm-col">
+                <h3><a href="Tower.html">The Tower</a></h3>
+                <p>Myles Standish Hall, affectionately known as 'The Tower' in the picturesque West Campus, provides stunning views and a historic atmosphere for an iconic BU experience.</p>
+            </div>
+            <div class="dorm-col">
+                <h3><a href="claflin.html">Claflin Hall</a></h3>
+                <p>Nestled in the serene East Campus, Claflin Hall offers a cozy atmosphere and proximity to essential academic buildings, creating a welcoming and convenient living environment.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="dorm-col">
+                <h3><a href="sleeper.html">Sleeper Hall</a></h3>
+                <p>Sleeper Hall in the heart of Central Campus is a peaceful retreat for dedicated students, providing a serene environment to focus on studies and recharge.</p>
+            </div>
+            <div class="dorm-col">
+                <h3><a href="rich.html">Rich Hall</a></h3>
+                <p>Rich Hall in the vibrant West Campus stands as a modern and comfortable choice, offering contemporary amenities for a well-rounded on-campus experience.</p>
+            </div>
+        </div>
+    </section>
+   
+
+    <!--------footer------>
+
+    <section class = "footer">
+        <h4>About Us</h4>
+        <p>BU Housing Guide is your trusted companion in making informed housing decisions.<br> 
+            Our mission is to simplify your transition to Boston University by providing verified insights from previous residents and real-time information about campus living.<br> 
+            We're here to help you thrive in your new academic journey.</p>
+            <div class="icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <p>Made by Syeda and Emma</p>
+    </section>
+        
+    
+
+<!--------JavaScript for Toggle Menu---------->
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right = "0";
+
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+</body>
+</html>
